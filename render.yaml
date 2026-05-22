@@ -1,0 +1,19 @@
+# render.yaml — Render.com uchun deployment konfiguratsiyasi
+services:
+  - type: worker
+    name: kino-bot
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: python main.py
+    envVars:
+      - key: BOT_TOKEN
+        sync: false
+      - key: SUPER_ADMINS
+        sync: false
+      - key: REQUIRED_CHANNELS
+        sync: false
+      - key: DB_PATH
+        value: /data/kino_bot.db
+
+# Persistent disk (ma'lumotlar bazasi saqlanishi uchun)
+# Render.com da "Disks" bo'limidan /data papkasini qo'shing
